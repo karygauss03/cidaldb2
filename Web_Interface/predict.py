@@ -31,7 +31,7 @@ def gcn_predictor(smiles_string, model):
 def chemebrta_predictor(smiles_string, model):
     tokenizer = RobertaTokenizerFast.from_pretrained('seyonec/SMILES_tokenized_PubChem_shard00_160k')
     
-    inputs = tokenizer(smiles_string, truncation=True, padding=True)
+    inputs = tokenizer(smiles_string, truncation=True, padding=True, return_tensors='pt')
     with torch.no_grad():
         outputs = model(**inputs)
     
