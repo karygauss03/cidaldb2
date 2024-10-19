@@ -4,10 +4,9 @@ from Emailer import EmailSender
 from captcha.image import ImageCaptcha
 import random
 import string
-import time
 from PIL import Image
 
-all_logos = Image.open("./Web_interface/media/all_logos.png")
+all_logos = Image.open("./Web_Interface/media/all_logos.png")
 
 def is_valid_email(email):
     # Simple email format validation using regex

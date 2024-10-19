@@ -6,26 +6,15 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import AllChem
 import pubchempy
-import rdkit.Chem.Descriptors as cd
-import rdkit.Chem.Lipinski as lip
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 import numpy as np
 from scipy.spatial import distance
 import pubchempy as pcp
-from PIL import Image
-import pickle
 import pandas as pd
 from streamlit_extras.add_vertical_space import add_vertical_space
-import config
-from scipy.spatial.distance import dice, cosine, hamming
-from streamlit_modal import Modal
-import streamlit.components.v1 as components
+from scipy.spatial.distance import dice, cosine
 import re
-from Emailer import EmailSender
-import random
-import string
-from captcha.image import ImageCaptcha
 
 
 captcha_codes = []
@@ -144,8 +133,8 @@ def search():
     ### Search By Smiles
     """
 
-    np_data = np.load("./Web_interface/data/data.npy")
-    df_data = pd.read_csv("./Web_interface/data/cidals.csv", dtype={'PUBCHEM_CID': 'Int32'})
+    np_data = np.load("./Web_Interface/data/data.npy")
+    df_data = pd.read_csv("./Web_Interface/data/cidals.csv", dtype={'PUBCHEM_CID': 'Int32'})
 
     tab1, tab2 = st.tabs(["Molecule SMILE", 'PUBCHEM ID'])
     with tab1:

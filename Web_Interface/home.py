@@ -3,11 +3,11 @@ from PIL import Image
 
 
 def home():
-    meep = Image.open('./Web_interface/media/Logo_MEEP.png')
-    bind = Image.open('./Web_interface/media/logo_BIND.png')
-    ipt = Image.open('./Web_interface/media/logo_IPT.png')
-    cidals = Image.open('./Web_interface/media/logo_CidalsDB.png')
-    all_logos = Image.open('./Web_interface/media/logos.png') 
+    meep = Image.open('./Web_Interface/media/Logo_MEEP.png')
+    bind = Image.open('./Web_Interface/media/logo_BIND.png')
+    ipt = Image.open('./Web_Interface/media/logo_IPT.png')
+    cidals = Image.open('./Web_Interface/media/logo_CidalsDB.png')
+    all_logos = Image.open('./Web_Interface/media/logos.png') 
 
     cola, colb, colc= st.columns([0.2, 0.6, 0.2])
     with cola:

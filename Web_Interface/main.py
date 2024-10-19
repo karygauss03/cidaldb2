@@ -5,17 +5,15 @@ from predict import predict
 from contact import contact
 from home import home
 from about import about
-import time
-from streamlit_extras.app_logo import add_logo
 
 st.set_page_config(
     page_title="CidalsDB",
-    page_icon="./Web_interface/media/logo_BIND.ico",
+    page_icon="./Web_Interface/media/logo_BIND.ico",
     layout="wide",
 )
 
 
-st.markdown('<style>' + open('./Web_interface/src/style.css').read() + '</style>', unsafe_allow_html=True)
+st.markdown('<style>' + open('./Web_Interface/src/style.css').read() + '</style>', unsafe_allow_html=True)
 hide_streamlit_style = """
             <style>
             MainMenu {visibility: hidden;}

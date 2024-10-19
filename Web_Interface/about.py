@@ -1,19 +1,17 @@
 import streamlit as st
 from lorem_text import lorem
-import plotly.express as px
 import pandas as pd
 from graphics.figures import *
-import base64
 from PIL import Image
 
-df = pd.read_csv("./Web_interface/data/cidals_user_view.csv")
+df = pd.read_csv("./Web_Interface/data/cidals_user_view.csv")
 
 text = lorem.paragraph()
-meep = Image.open('./Web_interface/media/Logo_MEEP.png')
-bind = Image.open('./Web_interface/media/logo_BIND.png')
-ipt = Image.open('./Web_interface/media/logo_IPT.png')
-compound_distribution = Image.open('./Web_interface/media/Distribution_of_compounds2.png')
-all_logos = Image.open("./Web_interface/media/all_logos.png")
+meep = Image.open('./Web_Interface/media/Logo_MEEP.png')
+bind = Image.open('./Web_Interface/media/logo_BIND.png')
+ipt = Image.open('./Web_Interface/media/logo_IPT.png')
+compound_distribution = Image.open('./Web_Interface/media/Distribution_of_compounds2.png')
+all_logos = Image.open("./Web_Interface/media/all_logos.png")
 def about():
     st.markdown(r"""
  # CidalsDB: An Open Resource for Anti-Pathogen Molecules
