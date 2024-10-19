@@ -1,0 +1,12 @@
+matplotlib==3.8.3
+numpy==1.22.3
+pandas==1.5.3
+rdkit==2022.9.5
+rdkit_pypi==2022.9.5
+scikit_learn==1.2.2
+deepchem==2.7.1
+dgl
+dgllife==0.3.2
+torch==2.2.1
+tensorflow==2.4.1
+

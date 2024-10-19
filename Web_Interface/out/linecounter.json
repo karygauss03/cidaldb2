@@ -1,0 +1,255 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/home/samermakni/Documents/bindinterface",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2023-08-09 04:31:40",
+            "filesum": 31,
+            "codesum": 3454,
+            "commentsum": 2281,
+            "blanksum": 290,
+            "statistics": {
+                ".md": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".py": {
+                    "code": 474,
+                    "comment": 17,
+                    "blank": 100
+                },
+                ".txt": {
+                    "code": 14,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".toml": {
+                    "code": 15,
+                    "comment": 0,
+                    "blank": 6
+                },
+                "": {
+                    "code": 14,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".css": {
+                    "code": 78,
+                    "comment": 20,
+                    "blank": 6
+                },
+                ".csv": {
+                    "code": 2858,
+                    "comment": 2244,
+                    "blank": 172
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 6,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": ".streamlit/config.toml"
+                },
+                {
+                    "filename": "__pycache__/about.cpython-38.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/about.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/config.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/contact.cpython-38.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/contact.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/home.cpython-38.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/home.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/predict.cpython-38.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/predict.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/search.cpython-38.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "__pycache__/search.cpython-39.pyc",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 8,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "about.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "config.py"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 4,
+                    "filename": "contact.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 1123,
+                    "comment": 1122,
+                    "filename": "data/AID_1258_label.csv"
+                },
+                {
+                    "blank": 172,
+                    "code": 611,
+                    "comment": 0,
+                    "filename": "data/cidals_edited.csv"
+                },
+                {
+                    "blank": 0,
+                    "code": 1124,
+                    "comment": 1122,
+                    "filename": "data/data.csv"
+                },
+                {
+                    "filename": "data/data.npy",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 6,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "Dockerfile"
+                },
+                {
+                    "blank": 1,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "home.py"
+                },
+                {
+                    "blank": 10,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "main.py"
+                },
+                {
+                    "filename": "media/chemistry.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "media/Logo_MEEP.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "models/MolOverForest-196k.pkl",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 33,
+                    "code": 123,
+                    "comment": 3,
+                    "filename": "predict.py"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "README.md"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "requirements.txt"
+                },
+                {
+                    "blank": 43,
+                    "code": 265,
+                    "comment": 10,
+                    "filename": "search.py"
+                },
+                {
+                    "blank": 3,
+                    "code": 39,
+                    "comment": 10,
+                    "filename": "src/style.css"
+                },
+                {
+                    "blank": 3,
+                    "code": 39,
+                    "comment": 10,
+                    "filename": "style.css"
+                }
+            ]
+        }
+    ]
+}

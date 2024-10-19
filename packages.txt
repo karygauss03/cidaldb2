@@ -1,0 +1,4 @@
+libgl1-mesa-glx
+libxrender1
+gcc
+g++

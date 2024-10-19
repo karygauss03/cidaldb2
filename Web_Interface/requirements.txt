@@ -1,0 +1,24 @@
+-f https://data.dgl.ai/wheels/repo.html
+numpy==1.22.3
+pandas==1.5.3
+PubChemPy==1.0.4
+py3Dmol==2.0.3
+scikit_learn==1.2.2
+rdkit==2022.9.5
+rdkit_pypi==2022.9.5
+scipy==1.8.1
+stmol==0.0.7
+streamlit==1.25.0
+streamlit_extras==0.2.7
+streamlit_on_Hover_tabs==1.0.1
+streamlit-modal==0.1.0
+lorem-text==2.1
+plotly==5.16.0
+captcha==0.5.0
+torch==2.2.1
+lxml==4.6.1
+dill==0.3.8
+deepchem==2.7.1
+dgllife==0.3.2
+dgl==2.0.0
+setuptools==75.1.0
