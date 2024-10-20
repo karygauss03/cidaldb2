@@ -177,18 +177,7 @@ def predict():
             )
             option = st.selectbox(
                 'Select Model',
-                loaded_models_filenames, key=42
-            )
-            st.markdown(
-                """
-                <style>
-                div[role="listbox"] > ul > li {
-                    font-size: 20px !important;
-                }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+                loaded_models_filenames, key = 42)
             if not smile:
                 pass 
             else:
