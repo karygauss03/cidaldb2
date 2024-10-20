@@ -164,7 +164,17 @@ def search():
             )
         col1, col2, col3, col4 = st.columns([0.4, 0.2, 0.2, 0.2])
         with col1:
-            N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=3)
+            st.markdown(
+                """
+                <style>
+                .slider-container {
+                    font-size: 20px !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+            N = st.slider("Choose the number of closest molecules to display", 1, 100, 10, key=3)
         with col2:
             add_vertical_space(2)
             show_active_only = st.checkbox("Show only Active molecules", key = 10)
