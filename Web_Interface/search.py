@@ -167,7 +167,7 @@ def search():
             st.markdown(
                 """
                 <style>
-                .slider-container {
+                [data-test-id="stMarkdownContainer"] p {
                     font-size: 20px !important;
                 }
                 </style>
