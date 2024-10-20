@@ -125,9 +125,12 @@ def is_valid_email(email):
     return re.match(pattern, email)
 
 def search():
-    st.title("Search")
 
-    st.write("Please insert a valid SMILE")
+    st.markdown("<h1 style='font-size:2rem;'>Search</h1>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='font-size:1.2rem;'>Please insert a valid SMILE</p>",
+        unsafe_allow_html=True
+    )
 
     """
     ### Search By Smiles
@@ -136,9 +139,29 @@ def search():
     np_data = np.load("./Web_Interface/data/data.npy")
     df_data = pd.read_csv("./Web_Interface/data/cidals.csv", dtype={'PUBCHEM_CID': 'Int32'})
 
+    tabs_css = """
+    <style>
+    button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
+    font-size: 20px;
+    }
+    </style>
+    """
+
+    st.write(tabs_css, unsafe_allow_html=True)
+
     tab1, tab2 = st.tabs(["Molecule SMILE", 'PUBCHEM ID'])
     with tab1:
         smile = st.text_input(label='Molecule SMILE', placeholder='COC1=C(C=C(C=C1)F)C(=O)C2CCCN(C2)CC3=CC4=C(C=C3)OCCO4')
+        st.markdown(
+                """
+                <style>
+                input[type="text"] {
+                    font-size: 20px !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
         col1, col2, col3, col4 = st.columns([0.4, 0.2, 0.2, 0.2])
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=3)
