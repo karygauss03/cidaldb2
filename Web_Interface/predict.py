@@ -177,8 +177,7 @@ def predict():
             )
             option = st.selectbox(
                 'Select Model',
-                loaded_models_filenames, key=42,
-                format_func=lambda x: f"<span style='font-size:20px;'>{x}</span>"
+                loaded_models_filenames, key=42
             )
             st.markdown(
                 """
