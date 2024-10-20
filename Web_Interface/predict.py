@@ -149,7 +149,15 @@ def predict():
     data = np.load("./Web_Interface/data/data.npy")
 
 
+    font_css = """
+    <style>
+    button[data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] > p {
+    font-size: 24px;
+    }
+    </style>
+    """
 
+    st.write(font_css, unsafe_allow_html=True)
     tab1, tab2 = st.tabs(["Molecule SMILE",'PUBCHEM ID'])
     with tab1:
             smile = st.text_input(label = 'Molecule SMILE', placeholder = 'COC1=C(C=C(C=C1)F)C(=O)C2CCCN(C2)CC3=CC4=C(C=C3)OCCO4')
