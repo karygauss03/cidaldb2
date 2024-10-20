@@ -168,7 +168,7 @@ def search():
             st.markdown(
                 """
                 <style>
-                [data-test-id="stMarkdownContainer"] p {
+                [data-testid="stMarkdownContainer"] p {
                     font-size: 20px !important;
                 }
                 </style>
