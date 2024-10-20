@@ -139,8 +139,11 @@ def predict():
     ### Search By Smiles
     """
 
-    st.title("Predict")
-    st.write("Please select the predictive model corresponding to the pathogen you are interested in:")
+    st.markdown("<h1 style='font-size:2rem;'>Predict</h1>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='font-size:1.5rem;'>Please select the predictive model corresponding to the pathogen you are interested in:</p>",
+        unsafe_allow_html=True
+    )
 
 
     data = np.load("./Web_Interface/data/data.npy")
