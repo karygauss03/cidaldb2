@@ -161,9 +161,10 @@ def predict():
     tab1, tab2 = st.tabs(["Molecule SMILE",'PUBCHEM ID'])
     with tab1:
             smile = st.text_input(
-                label='Molecule SMILE', 
+                label='<p style="font-size:20px;">Molecule SMILE</p>', 
                 placeholder='COC1=C(C=C(C=C1)F)C(=O)C2CCCN(C2)CC3=CC4=C(C=C3)OCCO4',
-                key='smile_input'
+                key='smile_input',
+                unsafe_allow_html=True
             )
             st.markdown(
                 """
