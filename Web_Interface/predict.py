@@ -66,8 +66,11 @@ def predict_with_model(smile, model_path):
     elif model_path == './Web_Interface/models/Covid_chemberta_model.pkl':
         with open(model_path, 'rb') as file:
             chemberta_model = dill.load(file)
-        y = chemebrta_predictor(smile, chemberta_model)
-        return y
+        return chemebrta_predictor(smile, chemberta_model)
+    elif model_path == './Web_Interface/models/Leishmania_chemberta_model.pkl':
+        with open(model_path, 'rb') as file:
+            chemebrta_model = dill.load(file)
+        return chemebrta_predictor(smile,chemebrta_model)
     else:
         molecule = Chem.MolFromSmiles(smile)
         x = np.array(AllChem.RDKFingerprint(molecule, fpSize=2048))
