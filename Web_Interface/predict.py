@@ -168,6 +168,16 @@ def predict():
             st.markdown(
                 """
                 <style>
+                [data-testid="stMarkdownContainer"] p {
+                    font-size: 20px !important;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+            st.markdown(
+                """
+                <style>
                 input[type="text"] {
                     font-size: 20px !important;
                 }
