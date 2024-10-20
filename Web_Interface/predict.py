@@ -139,7 +139,7 @@ def predict():
     ### Search By Smiles
     """
 
-    st.markdown("<h1 style='font-size:2rem;'>Predict</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='font-size:3rem;'>Predict</h1>", unsafe_allow_html=True)
     st.markdown(
         "<p style='font-size:1.5rem;'>Please select the predictive model corresponding to the pathogen you are interested in:</p>",
         unsafe_allow_html=True
@@ -152,58 +152,52 @@ def predict():
 
     tab1, tab2 = st.tabs(["Molecule SMILE",'PUBCHEM ID'])
     with tab1:
-            smile = st.text_input(label = 'Molecule SMILE', placeholder = 'COC1=C(C=C(C=C1)F)C(=O)C2CCCN(C2)CC3=CC4=C(C=C3)OCCO4')
-            option = st.selectbox(
-                'Select Model',
-                loaded_models_filenames, key = 42)
-            if not smile:
-                pass 
-            else:
-                try:
-                    col1, col2 = st.columns([0.7, 0.3])
-                    with col1:
-                        name = generate_name(smile)
-                        st.caption(name)
-                        render = makeblock(smile)
-                        render_mol(render)
-                        progress_text = "Operation in progress. Please wait."
-                    with col2:
-                        with st.spinner(progress_text):
-                            if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
-                                add_vertical_space(4)
-                                st.success('Active', icon="✅")
-                            elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
-                                add_vertical_space(4)
-                                st.error('Inactive', icon="❌")
-                except Exception as e:
-                    # st.error(e)
-                    st.error(traceback.format_exc())
-                    st.error("Invalid Smile")  # You might want to adjust this message based on the context of the error
-
-
-
+        smile = st.text_input(label='Molecule SMILE', placeholder='COC1=C(C=C(C=C1)F)C(=O)C2CCCN(C2)CC3=CC4=C(C=C3)OCCO4')
+        option = st.selectbox('Select Model', loaded_models_filenames, key=42)
+        if not smile:
+            pass
+        else:
+            try:
+                col1, col2 = st.columns([0.7, 0.3])
+                with col1:
+                    name = generate_name(smile)
+                    st.caption(f"<span style='font-size:20px;'>{name}</span>", unsafe_allow_html=True)
+                    render = makeblock(smile)
+                    render_mol(render)
+                    progress_text = "Operation in progress. Please wait."
+                with col2:
+                    with st.spinner(f"<span style='font-size:20px;'>{progress_text}</span>", unsafe_allow_html=True):
+                        if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
+                            add_vertical_space(4)
+                            st.success(f"<span style='font-size:20px;'>Active</span>", icon="✅", unsafe_allow_html=True)
+                        elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
+                            add_vertical_space(4)
+                            st.error(f"<span style='font-size:20px;'>Inactive</span>", icon="❌", unsafe_allow_html=True)
+            except Exception as e:
+                st.error(f"<span style='font-size:20px;'>{traceback.format_exc()}</span>", unsafe_allow_html=True)
+                st.error(f"<span style='font-size:20px;'>Invalid Smile</span>", unsafe_allow_html=True)
 
     with tab2:
-        pub = st.text_input(label = 'PUBCHEM ID', placeholder = '161916')
-        option = st.selectbox('Select Model',loaded_models_filenames, key = 43)
+        pub = st.text_input(label='PUBCHEM ID', placeholder='161916')
+        option = st.selectbox('Select Model', loaded_models_filenames, key=43)
         if not pub:
-            pass 
+            pass
         else:
             try:
                 cola, colb = st.columns([0.7, 0.3])
                 with cola:
                     smile = pubchem_id_to_smiles(pub)
                     name = generate_name(smile)
-                    st.caption(name)
+                    st.caption(f"<span style='font-size:20px;'>{name}</span>", unsafe_allow_html=True)
                     render = makeblock(smile)
                     render_mol(render)
                     progress_text = "Operation in progress. Please wait."
                 with colb:
-                    with st.spinner(progress_text):
+                    with st.spinner(f"<span style='font-size:20px;'>{progress_text}</span>", unsafe_allow_html=True):
                         if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
-                            st.success('Active', icon="✅")
+                            st.success(f"<span style='font-size:20px;'>Active</span>", icon="✅", unsafe_allow_html=True)
                         elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
-                            st.error('Inactive', icon="❌")
+                            st.error(f"<span style='font-size:20px;'>Inactive</span>", icon="❌", unsafe_allow_html=True)
             except Exception as e:
                 print(e)
-                st.error('Invalid PubchemID')
+                st.error(f"<span style='font-size:20px;'>Invalid PubchemID</span>", unsafe_allow_html=True)
