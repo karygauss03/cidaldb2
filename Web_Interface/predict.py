@@ -202,9 +202,6 @@ def predict():
                     st.error(traceback.format_exc())
                     st.error("Invalid Smile")  # You might want to adjust this message based on the context of the error
 
-
-
-
     with tab2:
         pub = st.text_input(label = 'PUBCHEM ID', placeholder = '161916')
         option = st.selectbox('Select Model',loaded_models_filenames, key = 43)
