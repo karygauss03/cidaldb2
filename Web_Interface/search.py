@@ -214,7 +214,8 @@ def search():
                 filtered_df = filtered_df.loc[:, ~filtered_df.columns.str.contains('^Unnamed')]
                 styled_filtered_df = filtered_df.style.applymap(highlight_active, subset=['Biological Activity'])
                 styled_filtered_df = filtered_df.style.format({"Molecular Weight": "{:.2f}".format})
-                if filtered_df.empty:
+                is_filtered_empty = filtered_df.empty
+                if is_filtered_empty:
                     st.warning("No results found for the given SMILES.")
                 else:
                     st.dataframe(styled_filtered_df ,
@@ -229,22 +230,24 @@ def search():
                                              "refs": st.column_config.LinkColumn(),
                                              "Molecular Weight": st.column_config.NumberColumn(format="%.1f")
                                         }, hide_index=True)
-                    @st.cache_data            
-                    def convert_df(df):
-                        return df.to_csv().encode('utf-8')
+                @st.cache_data            
+                def convert_df(df):
+                    return df.to_csv().encode('utf-8')
 
-                    csv = convert_df(filtered_df)
+                csv = convert_df(filtered_df)
 
-                    st.download_button(
-                        label="Download results as CSV",
-                        data=csv,
-                        file_name='results.csv',
-                        mime='text/csv',)
+                st.download_button(
+                    label="Download results as CSV",
+                    data=csv,
+                    file_name='results.csv',
+                    mime='text/csv',
+                    disabled=is_filtered_empty)
                 st.download_button(
                     label="Download All Data",
                     data=df_data.to_csv().encode('utf-8'),
                     file_name='all_data.csv',
-                    mime='text/csv')
+                    mime='text/csv',
+                    disabled=False)
             except Exception as e:
                 print(e)
                 st.error(e)
