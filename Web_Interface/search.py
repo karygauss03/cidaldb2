@@ -177,7 +177,7 @@ def search():
             )
         with col2:
             add_vertical_space(2)
-            show_active_only = st.checkbox("Show only Active molecules", key = 10)
+            show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=10)
         with col3:
             distance = 'Sørensen–Dice'
             distance = st.selectbox('Distance Measure',('Sørensen–Dice', 'Tanimoto', 'Cosine', 'Tversky', 'Average'), key = 44)
@@ -200,8 +200,10 @@ def search():
                 df_data.sort_values(by='Chemical Distance Similarity', inplace=True, ascending=False)
                 filtered_df = df_data.head(N)
                 filtered_df.insert(0, 'Chemical Distance', filtered_df['Chemical Distance Similarity'])
-                if show_active_only:
+                if show_active_only == 'Active':
                     filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Active']
+                elif show_active_only == 'Inactive':
+                    filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Inactive']
                 if patho == "Coronaviruses":
                     filtered_df = filtered_df[(filtered_df['Pathogen'] == 'SARS_CoV') | (filtered_df['Pathogen'] == 'SARS_CoV-2')]
                 # if patho == "SARS_CoV-2":
