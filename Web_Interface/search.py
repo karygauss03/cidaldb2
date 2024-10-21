@@ -230,28 +230,27 @@ def search():
                                              "refs": st.column_config.LinkColumn(),
                                              "Molecular Weight": st.column_config.NumberColumn(format="%.1f")
                                         }, hide_index=True)
-                @st.cache_data            
-                def convert_df(df):
-                    return df.to_csv().encode('utf-8')
-
-                csv = convert_df(filtered_df)
-
-                st.download_button(
-                    label="Download results as CSV",
-                    data=csv,
-                    file_name='results.csv',
-                    mime='text/csv',
-                    disabled=is_filtered_empty)
-                st.download_button(
-                    label="Download All Data",
-                    data=df_data.to_csv().encode('utf-8'),
-                    file_name='all_data.csv',
-                    mime='text/csv',
-                    disabled=False)
             except Exception as e:
                 print(e)
                 st.error(e)
                 st.error('Invalid Smile')
+            @st.cache_data            
+            def convert_df(df):
+                return df.to_csv().encode('utf-8')
+            csv = convert_df(filtered_df)
+
+            st.download_button(
+                label="Download results as CSV",
+                data=csv,
+                file_name='results.csv',
+                mime='text/csv',
+                disabled=is_filtered_empty)
+            st.download_button(
+                label="Download All Data",
+                data=df_data.to_csv().encode('utf-8'),
+                file_name='all_data.csv',
+                mime='text/csv',
+                disabled=False)
 
     with tab2:
         pubchem_id = st.text_input(label='PUBCHEM ID', placeholder='161916')
