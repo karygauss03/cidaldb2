@@ -184,8 +184,9 @@ def search():
         with col4:
             patho = "All"
             patho = st.selectbox('Pathogens',('Coronaviruses', 'Leishmaniases', 'All'), key = 4143)
-        filtered_df = df_data.head(N)
-        if smile:
+        if not smile:
+            pass
+        else:
             try:
                 with st.spinner("Please wait"):
                     try:
@@ -197,6 +198,7 @@ def search():
                 similarities = calculate_similarity(smile, df_smiles, np_data, distance_metric = distance)
                 df_data['Chemical Distance Similarity'] = similarities
                 df_data.sort_values(by='Chemical Distance Similarity', inplace=True, ascending=False)
+                filtered_df = df_data.head(N)
                 filtered_df.insert(0, 'Chemical Distance', filtered_df['Chemical Distance Similarity'])
                 if show_active_only == 'Active':
                     filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Active']
@@ -212,8 +214,7 @@ def search():
                 filtered_df = filtered_df.loc[:, ~filtered_df.columns.str.contains('^Unnamed')]
                 styled_filtered_df = filtered_df.style.applymap(highlight_active, subset=['Biological Activity'])
                 styled_filtered_df = filtered_df.style.format({"Molecular Weight": "{:.2f}".format})
-                is_filtered_empty = filtered_df.empty
-                if is_filtered_empty:
+                if filtered_df.empty:
                     st.warning("No results found for the given SMILES.")
                 else:
                     st.dataframe(styled_filtered_df ,
@@ -228,27 +229,26 @@ def search():
                                              "refs": st.column_config.LinkColumn(),
                                              "Molecular Weight": st.column_config.NumberColumn(format="%.1f")
                                         }, hide_index=True)
+                    @st.cache_data            
+                    def convert_df(df):
+                        return df.to_csv().encode('utf-8')
+
+                    csv = convert_df(filtered_df)
+
+                    st.download_button(
+                        label="Download results as CSV",
+                        data=csv,
+                        file_name='results.csv',
+                        mime='text/csv',)
+                st.download_button(
+                    label="Download All Data",
+                    data=df_data.to_csv().encode('utf-8'),
+                    file_name='all_data.csv',
+                    mime='text/csv')
             except Exception as e:
                 print(e)
                 st.error(e)
                 st.error('Invalid Smile')
-        @st.cache_data            
-        def convert_df(df):
-            return df.to_csv().encode('utf-8')
-        csv = convert_df(filtered_df)
-
-        st.download_button(
-            label="Download results as CSV",
-            data=csv,
-            file_name='results.csv',
-            mime='text/csv',
-            disabled=filtered_df.empty)
-        st.download_button(
-            label="Download All Data",
-                data=df_data.to_csv().encode('utf-8'),
-                file_name='all_data.csv',
-                mime='text/csv',
-                disabled=False)
 
     with tab2:
         pubchem_id = st.text_input(label='PUBCHEM ID', placeholder='161916')
@@ -257,7 +257,7 @@ def search():
             N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=2)
         with col2:
             add_vertical_space(2)
-            show_active_only = st.checkbox("Show only Active molecules", key = 9)
+            show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=9)
         with col3:
             distance = 'Sørensen–Dice'
             distance = st.selectbox('Distance Measure',('Sørensen–Dice', 'Tanimoto', 'Cosine', 'Tversky', 'Average'), key = 45)
@@ -281,8 +281,10 @@ def search():
                 df_data.sort_values(by='Chemical Distance Similarity', inplace=True, ascending=False)
                 filtered_df = df_data.head(N)
                 filtered_df.insert(0, 'Chemical Distance', filtered_df['Chemical Distance Similarity'])
-                if show_active_only:
+                if show_active_only == 'Active':
                     filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Active']
+                elif show_active_only == 'Inactive':
+                    filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Inactive']
                 if patho == "Coronaviruses":
                     filtered_df = filtered_df[(filtered_df['Pathogen'] == 'SARS_CoV') | (filtered_df['Pathogen'] == 'SARS_CoV-2')]
                 # if patho == "SARS_CoV-2":
