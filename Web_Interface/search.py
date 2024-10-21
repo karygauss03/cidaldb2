@@ -184,6 +184,7 @@ def search():
         with col4:
             patho = "All"
             patho = st.selectbox('Pathogens',('Coronaviruses', 'Leishmaniases', 'All'), key = 4143)
+        filtered_df = df_data.head(N)
         if smile:
             try:
                 with st.spinner("Please wait"):
@@ -196,7 +197,6 @@ def search():
                 similarities = calculate_similarity(smile, df_smiles, np_data, distance_metric = distance)
                 df_data['Chemical Distance Similarity'] = similarities
                 df_data.sort_values(by='Chemical Distance Similarity', inplace=True, ascending=False)
-                filtered_df = df_data.head(N)
                 filtered_df.insert(0, 'Chemical Distance', filtered_df['Chemical Distance Similarity'])
                 if show_active_only == 'Active':
                     filtered_df = filtered_df[filtered_df['Biological Activity'] == 'Active']
@@ -242,7 +242,7 @@ def search():
             data=csv,
             file_name='results.csv',
             mime='text/csv',
-            disabled=is_filtered_empty)
+            disabled=filtered_df.empty)
         st.download_button(
             label="Download All Data",
                 data=df_data.to_csv().encode('utf-8'),
