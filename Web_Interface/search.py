@@ -175,7 +175,7 @@ def search():
                 unsafe_allow_html=True
             )
         with col2:
-            show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=10)
+            show_active_only = st.selectbox("Show Biological Activity", ['All', 'Active', 'Inactive'], key=10)
         with col3:
             distance = 'Sørensen–Dice'
             distance = st.selectbox('Distance Measure',('Sørensen–Dice', 'Tanimoto', 'Cosine', 'Tversky', 'Average'), key = 44)
@@ -254,7 +254,7 @@ def search():
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=2)
         with col2:
-            show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=9)
+            show_active_only = st.selectbox("Show Biological Activity", ['All', 'Active', 'Inactive'], key=9)
         with col3:
             distance = 'Sørensen–Dice'
             distance = st.selectbox('Distance Measure',('Sørensen–Dice', 'Tanimoto', 'Cosine', 'Tversky', 'Average'), key = 45)
