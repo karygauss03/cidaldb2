@@ -232,19 +232,19 @@ def search():
                 print(e)
                 st.error(e)
                 st.error('Invalid Smile')
-            @st.cache_data            
-            def convert_df(df):
-                return df.to_csv().encode('utf-8')
-            csv = convert_df(filtered_df)
+        @st.cache_data            
+        def convert_df(df):
+            return df.to_csv().encode('utf-8')
+        csv = convert_df(filtered_df)
 
-            st.download_button(
-                label="Download results as CSV",
-                data=csv,
-                file_name='results.csv',
-                mime='text/csv',
-                disabled=is_filtered_empty)
-            st.download_button(
-                label="Download All Data",
+        st.download_button(
+            label="Download results as CSV",
+            data=csv,
+            file_name='results.csv',
+            mime='text/csv',
+            disabled=is_filtered_empty)
+        st.download_button(
+            label="Download All Data",
                 data=df_data.to_csv().encode('utf-8'),
                 file_name='all_data.csv',
                 mime='text/csv',
