@@ -184,9 +184,7 @@ def search():
         with col4:
             patho = "All"
             patho = st.selectbox('Pathogens',('Coronaviruses', 'Leishmaniases', 'All'), key = 4143)
-        if not smile:
-            pass
-        else:
+        if smile:
             try:
                 with st.spinner("Please wait"):
                     try:
