@@ -162,7 +162,7 @@ def search():
                 """,
                 unsafe_allow_html=True
             )
-        col1, col2, col3, col4 = st.columns([0.3, 0.2, 0.2, 0.2])
+        col1, col2, col3, col4 = st.columns([0.3, 0.15, 0.15, 0.15])
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1, 100, 10, key=3)
             st.markdown(
@@ -252,7 +252,7 @@ def search():
 
     with tab2:
         pubchem_id = st.text_input(label='PUBCHEM ID', placeholder='161916')
-        col1, col2, col3, col4= st.columns([0.3, 0.2, 0.2, 0.2])
+        col1, col2, col3, col4= st.columns([0.3, 0.15, 0.15, 0.15])
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=2)
         with col2:
