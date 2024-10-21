@@ -12,7 +12,6 @@ import numpy as np
 from scipy.spatial import distance
 import pubchempy as pcp
 import pandas as pd
-from streamlit_extras.add_vertical_space import add_vertical_space
 from scipy.spatial.distance import dice, cosine
 import re
 
@@ -162,7 +161,7 @@ def search():
                 """,
                 unsafe_allow_html=True
             )
-        col1, col2, col3, col4 = st.columns([0.3, 0.15, 0.15, 0.15])
+        col1, col2, col3, col4 = st.columns([0.4, 0.2, 0.2, 0.2])
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1, 100, 10, key=3)
             st.markdown(
@@ -176,7 +175,6 @@ def search():
                 unsafe_allow_html=True
             )
         with col2:
-            add_vertical_space(2)
             show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=10)
         with col3:
             distance = 'Sørensen–Dice'
@@ -252,11 +250,10 @@ def search():
 
     with tab2:
         pubchem_id = st.text_input(label='PUBCHEM ID', placeholder='161916')
-        col1, col2, col3, col4= st.columns([0.3, 0.15, 0.15, 0.15])
+        col1, col2, col3, col4= st.columns([0.4, 0.2, 0.2, 0.2])
         with col1:
             N = st.slider("Choose the number of closest molecules to display", 1,100,10, key=2)
         with col2:
-            add_vertical_space(2)
             show_active_only = st.selectbox("Show Biological Activity", ['Active', 'Inactive', 'All'], key=9)
         with col3:
             distance = 'Sørensen–Dice'
