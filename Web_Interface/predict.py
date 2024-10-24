@@ -29,7 +29,7 @@ def gcn_predictor(smiles_string, model):
     dataset = NumpyDataset(X=features, y=None, ids=None)
     proba = model.predict(dataset)
     predictions = np.argmax(y_test, axis=1)
-    st.text(y_test)
+    st.text(proba)
     return [predictions[0], proba]
 
 def chemebrta_predictor(smiles_string, model):
