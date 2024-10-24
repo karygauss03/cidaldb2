@@ -242,7 +242,7 @@ def predict():
                             if res == 1:
                                 add_vertical_space(4)
                                 st.success(f'Active (Probability: {active_proba:.2f})', icon="✅")
-                            elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
+                            else:
                                 add_vertical_space(4)
                                 st.error(f'Inactive (Probability: {inactive_proba:.2f})', icon="❌")
                 except Exception as e:
