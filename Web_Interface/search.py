@@ -238,15 +238,15 @@ def search():
                         data=csv,
                         file_name='results.csv',
                         mime='text/csv',)
-                st.download_button(
-                    label="Download All Data",
-                    data=df_data.to_csv().encode('utf-8'),
-                    file_name='all_data.csv',
-                    mime='text/csv')
             except Exception as e:
                 print(e)
                 st.error(e)
                 st.error('Invalid Smile')
+        st.download_button(
+                label="Download All Data",
+                data=df_data.to_csv().encode('utf-8'),
+                file_name='all_data.csv',
+                mime='text/csv')
 
     with tab2:
         pubchem_id = st.text_input(label='PUBCHEM ID', placeholder='161916')
