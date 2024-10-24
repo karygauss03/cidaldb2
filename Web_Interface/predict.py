@@ -239,6 +239,8 @@ def predict():
                             st.text(proba)
                             active_proba = proba[0][1]
                             inactive_proba = proba[0][0]
+                            st.text(active_proba)
+                            st.text(inactive_proba)
                             if res == 1:
                                 add_vertical_space(4)
                                 st.success(f'Active (Probability: {active_proba:.2f})', icon="✅")
