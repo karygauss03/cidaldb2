@@ -60,7 +60,7 @@ def download_model_if_needed(model_name, file_id, output_path):
 
 
 # Load the list of models after ensuring they are downloaded
-def load_pickle_files_from_folder(folder_path, drive_path name_condition=None):
+def load_pickle_files_from_folder(folder_path, drive_path, name_condition=None):
     file_names = []
     
     for filename in os.listdir(folder_path):
