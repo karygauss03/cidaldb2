@@ -19,6 +19,7 @@ def download_models():
     if not os.path.exists(MODEL_PATH):
         url = 'https://drive.google.com/file/d/11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA'
         gdown.download(url, MODEL_PATH, quiet=False)
+    print("###################Downloaded##################")
 
 
 st.set_page_config(
