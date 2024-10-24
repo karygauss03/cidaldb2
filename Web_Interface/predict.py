@@ -110,7 +110,8 @@ def predict_with_model(smile, model_path):
 
         # Make the prediction using the loaded model
         y = model.predict([x])
-    return y 
+        z = model.predict_proba(x_test)
+    return (y, z) 
 
 def pubchem_id_to_smiles(pubchem_id):
     try:
@@ -231,20 +232,13 @@ def predict():
                         progress_text = "Operation in progress. Please wait."
                     with col2:
                         with st.spinner(progress_text):
-                            # Get prediction probability
-                            probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
-                            try:
-                                probability = probability[0]
-                            except Exception as e:
-                                pass
-                            add_vertical_space(4)
-                            # Define a threshold for active/inactive
-                            threshold = 0.5
-                            if probability >= threshold:
-                                st.success(f'Active (Probability: {probability:.2f})', icon="✅")
-                            else:
-                                st.error(f'Inactive (Probability: {probability:.2f})', icon="❌")
-
+                            (res, proba) = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+                            if res == 1:
+                                add_vertical_space(4)
+                                st.success(f'Active (Probability: {proba:.2f})', icon="✅")
+                            elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
+                                add_vertical_space(4)
+                                st.error(f'Inactive (Probability: {proba:.2f})', icon="❌")
                 except Exception as e:
                     # st.error(e)
                     st.error(traceback.format_exc())
@@ -267,21 +261,10 @@ def predict():
                     progress_text = "Operation in progress. Please wait."
                 with colb:
                     with st.spinner(progress_text):
-                        # Get prediction probability
-                        probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
-                        # st.text(probability)
-                        try:
-                            probability = probability[0]
-                        except Exception as e:
-                            pass
- 
-                        # Define a threshold for active/inactive
-                        threshold = 0.5
-                        if probability >= threshold:
-                            st.success(f'Active (Probability: {probability:.2f})', icon="✅")
-                        else:
-                            st.error(f'Inactive (Probability: {probability:.2f})', icon="❌")
-
+                        if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
+                            st.success('Active', icon="✅")
+                        elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
+                            st.error('Inactive', icon="❌")
             except Exception as e:
                 print(e)
                 st.error('Invalid PubchemID')
