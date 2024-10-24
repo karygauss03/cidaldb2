@@ -51,7 +51,7 @@ st.markdown(streamlit_style, unsafe_allow_html=True)
 
 with st.sidebar:
     tabs = on_hover_tabs(tabName=['Home', 'Search', 'Predict', 'Documentation', 'About Us'], 
-                         iconName=['home', 'search', 'functions', 'document', 'info'],
+                         iconName=['home', 'search', 'functions', 'article', 'info'],
                          key="1",
                          default_choice=0)
 
@@ -67,7 +67,6 @@ elif tabs == 'Predict':
 
 elif tabs == 'Documentation':
     # documentation()
-    print("yes")
 
 elif tabs == 'About Us':
     contact()
