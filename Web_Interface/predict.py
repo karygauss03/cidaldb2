@@ -266,7 +266,7 @@ def predict():
                     progress_text = "Operation in progress. Please wait."
                 with colb:
                     with st.spinner(progress_text):
-                        Get prediction probability
+                        # Get prediction probability
                         probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
                         # st.text(probability)
                         probability = probability[0]
