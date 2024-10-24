@@ -110,7 +110,7 @@ def predict_with_model(smile, model_path):
 
         # Make the prediction using the loaded model
         y = model.predict([x])
-        z = model.predict_proba(x_test)
+        z = model.predict_proba([x])
     return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
