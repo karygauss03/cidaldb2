@@ -231,12 +231,17 @@ def predict():
                         progress_text = "Operation in progress. Please wait."
                     with col2:
                         with st.spinner(progress_text):
-                            if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
-                                add_vertical_space(4)
-                                st.success('Active', icon="✅")
-                            elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
-                                add_vertical_space(4)
-                                st.error('Inactive', icon="❌")
+                            # Get prediction probability
+                            probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+    
+                            add_vertical_space(4)
+                            # Define a threshold for active/inactive
+                            threshold = 0.5
+                            if probability >= threshold:
+                                st.success(f'Active (Probability: {probability:.2f})', icon="✅")
+                            else:
+                                st.error(f'Inactive (Probability: {probability:.2f})', icon="❌")
+
                 except Exception as e:
                     # st.error(e)
                     st.error(traceback.format_exc())
@@ -259,10 +264,16 @@ def predict():
                     progress_text = "Operation in progress. Please wait."
                 with colb:
                     with st.spinner(progress_text):
-                        if predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 1:
-                            st.success('Active', icon="✅")
-                        elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
-                            st.error('Inactive', icon="❌")
+                        # Get prediction probability
+                        probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+ 
+                        # Define a threshold for active/inactive
+                        threshold = 0.5
+                        if probability >= threshold:
+                            st.success(f'Active (Probability: {probability:.2f})', icon="✅")
+                        else:
+                            st.error(f'Inactive (Probability: {probability:.2f})', icon="❌")
+
             except Exception as e:
                 print(e)
                 st.error('Invalid PubchemID')
