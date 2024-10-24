@@ -111,7 +111,6 @@ def predict_with_model(smile, model_path):
         # Make the prediction using the loaded model
         y = model.predict([x])
         z = model.predict_proba([x])
-        st.text(z)
     return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
@@ -236,10 +235,10 @@ def predict():
                             [res, proba] = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
                             if res == 1:
                                 add_vertical_space(4)
-                                st.success(f'Active (Probability: {proba:.2f})', icon="✅")
+                                st.success(f'Active (Probability: {proba[0]:.2f})', icon="✅")
                             elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
                                 add_vertical_space(4)
-                                st.error(f'Inactive (Probability: {proba:.2f})', icon="❌")
+                                st.error(f'Inactive (Probability: {proba[1]:.2f})', icon="❌")
                 except Exception as e:
                     # st.error(e)
                     st.error(traceback.format_exc())
