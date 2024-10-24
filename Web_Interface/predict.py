@@ -113,7 +113,6 @@ def predict_with_model(smile, model_path):
         z = model.predict_proba([x])
         if (model_path == './Web_Interface/models/Coronavirus_GB.pkl'):
             y = y[0]
-        st.text(y)
     return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
@@ -238,6 +237,8 @@ def predict():
                             [res, proba] = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
                             active_proba = proba[0][1]
                             inactive_proba = proba[0][0]
+                            st.text(res)
+                            st.text(inactive_proba)
                             if res == 1:
                                 add_vertical_space(4)
                                 st.success(f'Active (Probability: {active_proba:.2f})', icon="✅")
