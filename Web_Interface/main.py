@@ -12,14 +12,14 @@ import os
 MODEL_PATH = './Web_Interface/models/Covid_chemberta_model.pkl'
 
 # Function to download the model if it doesn't exist locally
-def download_models():
-    # Create the directory if it doesn't exist
-    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+# def download_models():
+#     # Create the directory if it doesn't exist
+#     os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
     
-    if not os.path.exists(MODEL_PATH):
-        url = 'https://drive.google.com/file/d/11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA'
-        gdown.download(url, MODEL_PATH, quiet=False)
-    print("###################Downloaded##################")
+#     if not os.path.exists(MODEL_PATH):
+#         url = 'https://drive.google.com/file/d/11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA'
+#         gdown.download(url, MODEL_PATH, quiet=False)
+#     print("###################Downloaded##################")
 
 
 st.set_page_config(

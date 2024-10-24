@@ -19,7 +19,8 @@ import deepchem as dc
 from deepchem.data import NumpyDataset
 import dill
 from transformers import RobertaTokenizerFast
-
+import os
+import gdown
 
 def gcn_predictor(smiles_string, model):  
     featurizer = dc.feat.MolGraphConvFeaturizer()
@@ -38,6 +39,13 @@ def chemebrta_predictor(smiles_string, model):
     predictions = torch.argmax(outputs.logits, dim=1)
     return predictions.item()
 
+def download_model_if_needed(model_name, model_url):
+    os.makedirs(folder_path, exist_ok=True)
+    model_path = os.path.join(folder_path, model_name)
+    if not os.path.exists(model_path):
+        gdown.download(model_ul, model_path, quiet=False)
+
+# Load the list of models after ensuring they are downloaded
 def load_pickle_files_from_folder(folder_path, name_condition=None):
     file_names = []
     
@@ -49,7 +57,10 @@ def load_pickle_files_from_folder(folder_path, name_condition=None):
     return file_names
 
 folder_path = "./Web_Interface/models"
-
+url_covid_chemberta = "https://drive.google.com/file/d/11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA"
+url_leishmania_chemberta = "https://drive.google.com/file/d/13uAsXTzJ3ZiubvWgnLjToOHsecHFUdet"
+download_model_if_needed("Covid_chemberta_model.pkl", url_covid_chemberta)
+download_model_if_needed("Leishmania_chemberta_model.pkl", url_leishmania_chemberta)
 loaded_models_filenames = load_pickle_files_from_folder(folder_path, name_condition=lambda x: x.endswith('.pkl'))
 
 def predict_with_model(smile, model_path):
