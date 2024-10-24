@@ -111,9 +111,9 @@ def predict_with_model(smile, model_path):
         # Make the prediction using the loaded model
         y = model.predict([x])
         z = model.predict_proba([x])
-        if (model_path == './Web_Interface/models/Coronavirus_GB.pkl'):
-            z = z[0]
-    return [y, [z]] 
+        # if (model_path == './Web_Interface/models/Coronavirus_GB.pkl'):
+        #     z = z[0]
+    return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
     try:
@@ -235,6 +235,8 @@ def predict():
                     with col2:
                         with st.spinner(progress_text):
                             [res, proba] = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+                            st.text(res)
+                            st.text(proba)
                             active_proba = proba[0][1]
                             inactive_proba = proba[0][0]
                             if res == 1:
