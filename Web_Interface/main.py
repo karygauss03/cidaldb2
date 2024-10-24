@@ -5,6 +5,21 @@ from predict import predict
 from contact import contact
 from home import home
 from about import about
+import gdown
+import os
+
+# Define the path where the model should be saved
+MODEL_PATH = './Web_Interface/models/Covid_chemberta_model.pkl'
+
+# Function to download the model if it doesn't exist locally
+def download_models():
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
+    
+    if not os.path.exists(MODEL_PATH):
+        url = 'https://drive.google.com/file/d/11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA'
+        gdown.download(url, MODEL_PATH, quiet=False)
+
 
 st.set_page_config(
     page_title="CidalsDB",
@@ -12,6 +27,8 @@ st.set_page_config(
     layout="wide",
 )
 
+with st.spinner("Downloading and loading the model..."):
+    download_models()
 
 st.markdown('<style>' + open('./Web_Interface/src/style.css').read() + '</style>', unsafe_allow_html=True)
 hide_streamlit_style = """
