@@ -5,6 +5,7 @@ from predict import predict
 from contact import contact
 from home import home
 from about import about
+from documentation import documentation
 import gdown
 import os
 
@@ -66,8 +67,7 @@ elif tabs == 'Predict':
     predict()
 
 elif tabs == 'Documentation':
-    # documentation()
-    print("t")
+    documentation()
 
 elif tabs == 'About Us':
     contact()
