@@ -70,7 +70,7 @@ def load_pickle_files_from_folder(folder_path, name_condition=None):
     
     return file_names
 
-folder_path = "./Web_Interface/models"
+folder_path = "./models"
 file_id_covid_chemberta = "11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA"
 file_id_leishmania_chemberta = "13uAsXTzJ3ZiubvWgnLjToOHsecHFUdet"
 download_model_if_needed("Covid_chemberta_model.pkl", file_id_covid_chemberta, folder_path)
