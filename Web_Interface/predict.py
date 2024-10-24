@@ -233,6 +233,8 @@ def predict():
                         with st.spinner(progress_text):
                             # Get prediction probability
                             probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+                            st.text(probability)
+                            st.text(type(probability))
     
                             add_vertical_space(4)
                             # Define a threshold for active/inactive
