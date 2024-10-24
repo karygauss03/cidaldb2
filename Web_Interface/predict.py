@@ -21,6 +21,7 @@ import dill
 from transformers import RobertaTokenizerFast
 import os
 import gdown
+import requests
 
 def gcn_predictor(smiles_string, model):  
     featurizer = dc.feat.MolGraphConvFeaturizer()
@@ -39,11 +40,21 @@ def chemebrta_predictor(smiles_string, model):
     predictions = torch.argmax(outputs.logits, dim=1)
     return predictions.item()
 
+def download_file_from_google_drive(url, destination):
+    session = requests.Session()
+    response = session.get(url, params={'confirm': 'true'}, stream=True)
+    
+    # Save the response content to the destination file
+    with open(destination, 'wb') as f:
+        for chunk in response.iter_content(32768):
+            if chunk:  # filter out keep-alive new chunks
+                f.write(chunk)
+
 def download_model_if_needed(model_name, model_url):
     os.makedirs(folder_path, exist_ok=True)
     model_path = os.path.join(folder_path, model_name)
     if not os.path.exists(model_path):
-        gdown.download(model_url, model_path, quiet=False)
+        download_file_from_google_drive(model_url, model_path)
 
 # Load the list of models after ensuring they are downloaded
 def load_pickle_files_from_folder(folder_path, name_condition=None):
