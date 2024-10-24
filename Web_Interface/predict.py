@@ -233,13 +233,14 @@ def predict():
                     with col2:
                         with st.spinner(progress_text):
                             [res, proba] = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
-                            assigned_probability = max(proba[0][0], proba[0][1])
+                            active_proba = proba[0][1]
+                            inactive_proba = proba[0][0]
                             if res == 1:
                                 add_vertical_space(4)
-                                st.success(f'Active (Probability: {assigned_probability:.2f})', icon="✅")
+                                st.success(f'Active (Probability: {active_proba:.2f})', icon="✅")
                             elif predict_with_model(smile, f"./Web_Interface/models/{option}.pkl") == 0:
                                 add_vertical_space(4)
-                                st.error(f'Inactive (Probability: {assigned_probability:.2f})', icon="❌")
+                                st.error(f'Inactive (Probability: {inactive_proba:.2f})', icon="❌")
                 except Exception as e:
                     # st.error(e)
                     st.error(traceback.format_exc())
