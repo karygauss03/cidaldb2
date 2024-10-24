@@ -60,7 +60,7 @@ def download_model_if_needed(model_name, file_id, output_path):
 
 
 # Load the list of models after ensuring they are downloaded
-def load_pickle_files_from_folder(folder_path, name_condition=None):
+def load_pickle_files_from_folder(folder_path, drive_path name_condition=None):
     file_names = []
     
     for filename in os.listdir(folder_path):
@@ -68,14 +68,20 @@ def load_pickle_files_from_folder(folder_path, name_condition=None):
             file_name_without_extension = os.path.splitext(filename)[0]
             file_names.append(file_name_without_extension)
     
+    for filename in os.listdir(drive_path):
+        if name_condition is None or name_condition(filename):
+            file_name_without_extension = os.path.splitext(filename)[0]
+            file_names.append(file_name_without_extension)
+    
     return file_names
 
-folder_path = "./models"
+folder_path = "./Web_Interface/models"
+drive_path = "/mount/src/cidaldb2/Web_Interface/models"
 file_id_covid_chemberta = "11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA"
 file_id_leishmania_chemberta = "13uAsXTzJ3ZiubvWgnLjToOHsecHFUdet"
 download_model_if_needed("Covid_chemberta_model.pkl", file_id_covid_chemberta, folder_path)
 download_model_if_needed("Leishmania_chemberta_model.pkl", file_id_leishmania_chemberta, folder_path)
-loaded_models_filenames = load_pickle_files_from_folder(folder_path, name_condition=lambda x: x.endswith('.pkl'))
+loaded_models_filenames = load_pickle_files_from_folder(folder_path, drive_path, name_condition=lambda x: x.endswith('.pkl'))
 
 def predict_with_model(smile, model_path):
     #st.text(type(model_path))
