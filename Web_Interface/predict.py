@@ -234,7 +234,7 @@ def predict():
                             # Get prediction probability
                             probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
                             st.text(probability)
-                            st.text(type(probability))
+                            probability = probability[0]
     
                             add_vertical_space(4)
                             # Define a threshold for active/inactive
