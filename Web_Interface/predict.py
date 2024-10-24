@@ -30,7 +30,7 @@ def gcn_predictor(smiles_string, model):
     y_test = model.predict(dataset)
     predictions = np.argmax(y_test, axis=1)
 
-    predictions_list = y_tst_pred.tolist()
+    predictions_list = predictions.tolist()
     my_pred_prob = y_test.tolist()
     probability = []
 
