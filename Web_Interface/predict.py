@@ -69,9 +69,9 @@ def load_pickle_files_from_folder(folder_path, drive_path, name_condition=None):
             file_names.append(file_name_without_extension)
     
     for filename in os.listdir(drive_path):
+        print(filename)
         if name_condition is None or name_condition(filename):
             file_name_without_extension = os.path.splitext(filename)[0]
-            print(file_name_without_extension)
             file_names.append(file_name_without_extension)
     
     return file_names
