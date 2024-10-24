@@ -50,8 +50,8 @@ streamlit_style = """
 st.markdown(streamlit_style, unsafe_allow_html=True)
 
 with st.sidebar:
-    tabs = on_hover_tabs(tabName=['Home', 'Search', 'Predict', 'About Us'], 
-                         iconName=['home', 'search', 'functions', 'info'],
+    tabs = on_hover_tabs(tabName=['Home', 'Search', 'Predict', 'Documentation', 'About Us'], 
+                         iconName=['home', 'search', 'functions', 'document', 'info'],
                          key="1",
                          default_choice=0)
 
@@ -64,6 +64,10 @@ elif tabs == 'Search':
 
 elif tabs == 'Predict':
     predict()
+
+elif tabs == 'Documentation':
+    # documentation()
+    print("yes")
 
 elif tabs == 'About Us':
     contact()
