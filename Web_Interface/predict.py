@@ -233,7 +233,6 @@ def predict():
                         with st.spinner(progress_text):
                             # Get prediction probability
                             probability = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
-                            st.text(probability)
                             try:
                                 probability = probability[0]
                             except Exception as e:
