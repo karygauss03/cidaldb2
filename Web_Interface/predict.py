@@ -113,6 +113,7 @@ def predict_with_model(smile, model_path):
         z = model.predict_proba([x])
         if (model_path == './Web_Interface/models/Coronavirus_GB.pkl'):
             z = z[0]
+        st.text(z)
     return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
