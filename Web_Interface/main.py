@@ -28,8 +28,8 @@ st.set_page_config(
     layout="wide",
 )
 
-with st.spinner("Downloading and loading the model..."):
-    download_models()
+# with st.spinner("Downloading and loading the model..."):
+#     download_models()
 
 st.markdown('<style>' + open('./Web_Interface/src/style.css').read() + '</style>', unsafe_allow_html=True)
 hide_streamlit_style = """
