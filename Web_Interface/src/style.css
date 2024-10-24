@@ -3,7 +3,7 @@ section[data-testid='stSidebar'] {
     min-width: unset !important;
     width: unset !important;
     flex-shrink: unset !important;
-    width: 300px;
+    width: 280px;
 }
 
 button[kind="header"] {
@@ -19,7 +19,7 @@ button[kind="header"] {
     /* The navigation menu specs and size */
     section[data-testid='stSidebar']>div {
         height: 100%;
-        width: 250px;
+        width: 280px;
         position: relative;
         z-index: 1;
         top: 0;
