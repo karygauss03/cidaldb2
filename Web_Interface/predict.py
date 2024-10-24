@@ -50,7 +50,7 @@ def download_file_from_google_drive(url, destination):
             if chunk:  # filter out keep-alive new chunks
                 f.write(chunk)
 
-def download_model_if_needed(model_name, file_id):
+def download_model_if_needed(model_name, file_id, output_path):
     os.makedirs(folder_path, exist_ok=True)
     model_path = os.path.join(folder_path, model_name)
     if not os.path.exists(model_path):
@@ -73,8 +73,8 @@ def load_pickle_files_from_folder(folder_path, name_condition=None):
 folder_path = "./Web_Interface/models"
 file_id_covid_chemberta = "11N3HU8Ll0Rou-hc-yGilnz2UyQIAAMWA"
 file_id_leishmania_chemberta = "13uAsXTzJ3ZiubvWgnLjToOHsecHFUdet"
-download_model_if_needed("Covid_chemberta_model.pkl", file_id_covid_chemberta)
-download_model_if_needed("Leishmania_chemberta_model.pkl", file_id_leishmania_chemberta)
+download_model_if_needed("Covid_chemberta_model.pkl", file_id_covid_chemberta, folder_path)
+download_model_if_needed("Leishmania_chemberta_model.pkl", file_id_leishmania_chemberta, folder_path)
 loaded_models_filenames = load_pickle_files_from_folder(folder_path, name_condition=lambda x: x.endswith('.pkl'))
 
 def predict_with_model(smile, model_path):
