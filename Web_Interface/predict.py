@@ -111,7 +111,7 @@ def predict_with_model(smile, model_path):
         # Make the prediction using the loaded model
         y = model.predict([x])
         z = model.predict_proba(x_test)
-    return (y, z) 
+    return [y, z] 
 
 def pubchem_id_to_smiles(pubchem_id):
     try:
@@ -232,7 +232,7 @@ def predict():
                         progress_text = "Operation in progress. Please wait."
                     with col2:
                         with st.spinner(progress_text):
-                            (res, proba) = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
+                            [res, proba] = predict_with_model(smile, f"./Web_Interface/models/{option}.pkl")
                             if res == 1:
                                 add_vertical_space(4)
                                 st.success(f'Active (Probability: {proba:.2f})', icon="✅")
