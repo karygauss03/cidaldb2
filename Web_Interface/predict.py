@@ -50,13 +50,13 @@ def download_file_from_google_drive(url, destination):
             if chunk:  # filter out keep-alive new chunks
                 f.write(chunk)
 
-def download_model_if_needed(model_name, file_id, output_path):
+def download_model_if_needed(model_name, file_id, folder_path):
     os.makedirs(folder_path, exist_ok=True)
     model_path = os.path.join(folder_path, model_name)
     if not os.path.exists(model_path):
         gdrive_url = f"https://drive.google.com/uc?id={file_id}"
-        gdown.download(gdrive_url, output_path, quiet=False)
-        print(f"Downloaded to {output_path}")
+        gdown.download(gdrive_url, model_path, quiet=False)
+        print(f"Downloaded to {model_path}")
 
 
 # Load the list of models after ensuring they are downloaded
@@ -67,12 +67,10 @@ def load_pickle_files_from_folder(folder_path, drive_path, name_condition=None):
         if name_condition is None or name_condition(filename):
             file_name_without_extension = os.path.splitext(filename)[0]
             file_names.append(file_name_without_extension)
-    print(folder_path)
-    print(drive_path)
-    for filename in os.listdir(drive_path):
-        if name_condition is None or name_condition(filename):
-            file_name_without_extension = os.path.splitext(filename)[0]
-            file_names.append(file_name_without_extension)
+    # for filename in os.listdir(drive_path):
+    #     if name_condition is None or name_condition(filename):
+    #         file_name_without_extension = os.path.splitext(filename)[0]
+    #         file_names.append(file_name_without_extension)
     
     return file_names
 
