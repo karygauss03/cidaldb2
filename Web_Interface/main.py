@@ -67,6 +67,7 @@ elif tabs == 'Predict':
 
 elif tabs == 'Documentation':
     # documentation()
+    print("t")
 
 elif tabs == 'About Us':
     contact()
