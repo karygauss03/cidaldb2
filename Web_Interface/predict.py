@@ -27,8 +27,16 @@ def gcn_predictor(smiles_string, model):
     featurizer = dc.feat.MolGraphConvFeaturizer()
     features = featurizer.featurize([smiles_string])
     dataset = NumpyDataset(X=features, y=None, ids=None)
-    predictions = np.argmax(model.predict(dataset), axis=1)
-    return predictions[0]
+    y_test = model.predict(dataset)
+    predictions = np.argmax(y_test, axis=1)
+
+    predictions_list = y_tst_pred.tolist()
+    my_pred_prob = y_test.tolist()
+    probability = []
+
+    for index, prob in zip(predictions, my_pred_prob):
+        probability.append(round(prob[index], 3))
+    return [predictions[0], probability]
 
 def chemebrta_predictor(smiles_string, model):
     tokenizer = RobertaTokenizerFast.from_pretrained('seyonec/SMILES_tokenized_PubChem_shard00_160k')
@@ -91,8 +99,8 @@ def predict_with_model(smile, model_path):
         with open('./Web_Interface/models/Coronavirus_GCN.pkl', 'rb') as file:
             gcn_model = dill.load(file)
         # st.text(gcn_model.keys())
-        y = gcn_predictor(smile, gcn_model)
-        return y
+        [y, z] = gcn_predictor(smile, gcn_model)
+        return [y, [z]]
     elif model_path == './Web_Interface/models/Covid_chemberta_model.pkl':
         with open(model_path, 'rb') as file:
             chemberta_model = dill.load(file)
