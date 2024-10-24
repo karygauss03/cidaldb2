@@ -36,6 +36,7 @@ def gcn_predictor(smiles_string, model):
 
     for index, prob in zip(predictions, my_pred_prob):
         probability.append(round(prob[index], 3))
+    st.text(probability)
     return [predictions[0], probability]
 
 def chemebrta_predictor(smiles_string, model):
