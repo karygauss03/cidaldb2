@@ -43,7 +43,7 @@ def download_model_if_needed(model_name, model_url):
     os.makedirs(folder_path, exist_ok=True)
     model_path = os.path.join(folder_path, model_name)
     if not os.path.exists(model_path):
-        gdown.download(model_ul, model_path, quiet=False)
+        gdown.download(model_url, model_path, quiet=False)
 
 # Load the list of models after ensuring they are downloaded
 def load_pickle_files_from_folder(folder_path, name_condition=None):
