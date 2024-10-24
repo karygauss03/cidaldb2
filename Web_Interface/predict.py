@@ -29,15 +29,8 @@ def gcn_predictor(smiles_string, model):
     dataset = NumpyDataset(X=features, y=None, ids=None)
     y_test = model.predict(dataset)
     predictions = np.argmax(y_test, axis=1)
-
-    predictions_list = predictions.tolist()
-    my_pred_prob = y_test.tolist()
-    probability = []
-
-    for index, prob in zip(predictions, my_pred_prob):
-        probability.append(round(prob[index], 3))
-    st.text(probability)
-    return [predictions[0], probability]
+    st.text(y_test)
+    return [predictions[0], y_test]
 
 def chemebrta_predictor(smiles_string, model):
     tokenizer = RobertaTokenizerFast.from_pretrained('seyonec/SMILES_tokenized_PubChem_shard00_160k')
