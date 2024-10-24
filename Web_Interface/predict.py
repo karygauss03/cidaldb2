@@ -28,7 +28,7 @@ def gcn_predictor(smiles_string, model):
     features = featurizer.featurize([smiles_string])
     dataset = NumpyDataset(X=features, y=None, ids=None)
     proba = model.predict(dataset)
-    predictions = np.argmax(y_test, axis=1)
+    predictions = np.argmax(proba, axis=1)
     st.text(proba)
     return [predictions[0], proba]
 
